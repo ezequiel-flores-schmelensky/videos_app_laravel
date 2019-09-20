@@ -13,16 +13,9 @@
 use App\Video;
 
 Route::get('/', function () {
-    $videos = Video::all();
-    foreach ($videos as $video) {
-        echo $video->title;
-        echo $video->user->email.'<br/>';
-        foreach ($video->comments as $comment) {
-            echo $comment->body;
-        }
-        echo "<hr/>";
-    }
-    die();
-
     return view('welcome');
 });
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
