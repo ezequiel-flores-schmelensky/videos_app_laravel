@@ -10,7 +10,19 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use App\Video;
 
 Route::get('/', function () {
+    $videos = Video::all();
+    foreach ($videos as $video) {
+        echo $video->title;
+        echo $video->user->email.'<br/>';
+        foreach ($video->comments as $comment) {
+            echo $comment->body;
+        }
+        echo "<hr/>";
+    }
+    die();
+
     return view('welcome');
 });
