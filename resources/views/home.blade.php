@@ -23,7 +23,7 @@
                                 </div>
                             @endif
                             <div class="data">
-                                <h4><a href="video-title">{{$video->title}}</a></h4>
+                                <h4 class="video-title"><a href="{{ route('detailVideo', ['video_id' => $video->id]) }}">{{$video->title}}</a></h4>
                                 <p>{{ $video->user->name.' '.$video->user->surname }}</p>
                             </div>
                             <!-- BOTONES DE ACCIÓN -->
