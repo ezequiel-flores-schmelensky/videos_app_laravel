@@ -10,24 +10,32 @@
                 </div>
             @endif
 
-            <ul id="videos-list">
+            <div id="videos-list">
                 @foreach($videos as $video)
-                    <li class="video-item col-md-4 pull-left">
-                        <!-- imagen del video -->
-                        @if(Storage::disk('images')->has($video->image))
-                            <div class="video-image-thumb">
-                                <div class="col-md-6 col-md-offset-3">
-                                    <img src="{{ url('/miniatura/'.$video->image) }}"/>
+                    <div class="video-item col-md-10 pull-left panel panel-default">
+                        <div class="panel-body">
+                            <!-- imagen del video -->
+                            @if(Storage::disk('images')->has($video->image))
+                                <div class="video-image-thumb col-md-3 pull-left">
+                                    <div class="video-image-mask">
+                                        <img src="{{ url('/miniatura/'.$video->image) }}" class="video-image"/>
+                                    </div>
                                 </div>
+                            @endif
+                            <div class="data">
+                                <h4><a href="video-title">{{$video->title}}</a></h4>
+                                <p>{{ $video->user->name.' '.$video->user->surname }}</p>
                             </div>
-                        @endif
-                        <div class="data">
-                            <h4>{{$video->title}}</h4>
+                            <!-- BOTONES DE ACCIÓN -->
+                            <a href="" class="btn btn-success">Ver</a>
+                            @if(Auth::check() && Auth::user()->id == $video->user->id)
+                                <a href="" class="btn btn-warning">Editar</a>
+                                <a href="" class="btn btn-danger">Editar</a>
+                            @endif
                         </div>
-                        <!-- BOTONES DE ACCIÓN -->
-                    </li>
+                    </div>
                 @endforeach
-            </ul>
+            </div>
         </div>
 
         {{$videos->links()}}
