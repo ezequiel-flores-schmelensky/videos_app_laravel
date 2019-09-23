@@ -43,8 +43,8 @@ class VideoController extends Controller
         $video_file = $request->file('video');
         if($video_file) {
             $video_path = time().$video_file->getClientOriginalName();
-            \Storage::disk('images')->put($video_path, \File::get($video_file));
-            $video->video_path = video_path;
+            \Storage::disk('videos')->put($video_path, \File::get($video_file));
+            $video->video_path = $video_path;
         }
 
         $video->save();
