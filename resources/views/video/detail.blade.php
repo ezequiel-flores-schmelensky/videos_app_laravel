@@ -22,6 +22,7 @@
                 </div>
             </div>
             <!-- comentarios -->
+            @include('video.comments')
         </div>
     </div>
 @endsection
