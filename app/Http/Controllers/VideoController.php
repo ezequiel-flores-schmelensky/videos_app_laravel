@@ -96,4 +96,14 @@ class VideoController extends Controller
         }
         return redirect()->route('home')->with($message);
     }
+
+    public function edit($video_id) {
+        $user = \Auth::user();
+        $video = Video::findOrFail($video_id);
+        if ($user && $video->user_id == $user->id) {
+            return view('video.edit', array('video' => $video));
+        }  else {
+            return redirect()->route('home');
+        }
+    }
 }
