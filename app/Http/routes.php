@@ -86,6 +86,12 @@ Route::get('/buscar/{search?}/{filter?}', array(
     'uses' => 'VideoController@search'
 ));
 
+// Usuarios
+Route::get('/canal/{user_id}', array(
+    'as' => 'channel',
+    'uses' => 'UserController@channel'
+));
+
 // Cache
 Route::get('/clear-cache', function() {
     $code = Artisan::call('cache:clear');
