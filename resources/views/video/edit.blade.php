@@ -5,7 +5,7 @@
         <div class="row">
             <h2>Editar {{$video->title}}</h2>
             <hr/>
-            <form action="{{ route('saveVideo') }}" method="post" enctype="multipart/form-data" class="col-lg-7">
+            <form action="{{ route('updateVideo', ['video_id' => $video->id]) }}" method="post" enctype="multipart/form-data" class="col-lg-7">
                 {!! csrf_field() !!}
 
                 @if($errors->any())

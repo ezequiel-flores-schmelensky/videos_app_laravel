@@ -36,6 +36,12 @@ Route::post('/guardar-video', array(
     'uses' => 'VideoController@saveVideo'
 ));
 
+Route::post('/update-video/{video_id}', array(
+    'as' => 'updateVideo',
+    'middleware' => 'auth',
+    'uses' => 'VideoController@update'
+));
+
 Route::get('/miniatura/{filename}', array(
     'as' => 'imageVideo',
     'uses' => 'VideoController@getImage'
@@ -73,4 +79,9 @@ Route::get('/editar-video/{video_id}', array(
     'as' => 'videoEdit',
     'middleware' => 'auth',
     'uses' => 'VideoController@edit'
+));
+
+Route::get('/buscar/{search?}', array(
+    'as' => 'videoSearch',
+    'uses' => 'VideoController@search'
 ));
