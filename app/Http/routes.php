@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/home', array(
+Route::get('/', array(
     'as' => 'home',
     'uses' => 'HomeController@index'
 ));
