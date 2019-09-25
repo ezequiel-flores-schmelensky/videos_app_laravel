@@ -21,6 +21,11 @@ body {
     font-size: 19px;
 }
 
-.video-title a{
+.video-title a {
     color: #444;
+}
+
+.btn-filter {
+    display: block;
+    margin-top:5px;
 }

@@ -81,7 +81,12 @@ Route::get('/editar-video/{video_id}', array(
     'uses' => 'VideoController@edit'
 ));
 
-Route::get('/buscar/{search?}', array(
+Route::get('/buscar/{search?}/{filter?}', array(
     'as' => 'videoSearch',
     'uses' => 'VideoController@search'
 ));
+
+// Cache
+Route::get('/clear-cache', function() {
+    $code = Artisan::call('cache:clear');
+});
